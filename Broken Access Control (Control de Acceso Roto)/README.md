@@ -23,19 +23,7 @@ El objetivo es simular el ciclo de vida completo de un ataque controlado en un e
 
 Para contener los artefactos ofensivos y evitar fugas de tráfico hacia la red doméstica o Internet, la arquitectura se despliega en un entorno de red lógicamente aislado.
 
-[ RED INTERNA AISLADA: "Lab-Telemetry" ]
-                                 |
-     +---------------------------+---------------------------+
-     |                                                       |
-     v                                                       v
-+------------------------+                              +------------------------+
-|    Máquina Atacante    |                              |    Máquina Víctima     |
-|   OS: Kali Linux v2026 |                              |   OS: Windows 10/11    |
-|   IP: 10.0.5.5/24      |                              |   IP: 10.0.5.10/24     |
-+------------------------+                              +------------------------+
-| Servidor: IIS (.NET)   |
-| Telemetría: Sysmon     |
-+------------------------+
+![Arquitectura](img/diagramaArchi.png)
 
 ### Paso 1.1: VirtualBox Hypervisor Network Hardening
 Ambas máquinas virtuales deben configurarse en caliente o apagadas con los siguientes parámetros de aislamiento:
