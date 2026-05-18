@@ -1,23 +1,24 @@
-# Lab A01:2021 – Control de Acceso Roto (Broken Access Control)
+# 🔬 Lab Técnico: Explotación de Path Traversal (OWASP A01:2021) y Telemetría de Endpoint en Entornos IIS/.NET
 
-## 1. Identificación y Mapeo del Escenario
-Este laboratorio práctico documenta la explotación y posterior detección de una vulnerabilidad de Control de Acceso Roto, clasificada como la posición #1 en el OWASP Top 10.
+## 📋 Descripción del Escenario
+Este laboratorio práctico documenta el despliegue, explotación y posterior análisis forense de una vulnerabilidad de **Control de Acceso Roto (Broken Access Control)**, específicamente un **Path Traversal / Arbitrary File Read (CWE-22 / CWE-73)**. 
 
-*   **ID OWASP:** A01:2021 – Broken Access Control
-*   **Asociación CWE:** CWE-22 (Improper Limitation of a Pathname to a Restricted Directory / Path Traversal) o CWE-639 (Insecure Direct Object References - IDOR). *(Nota: Ajustar según el exploit exacto que uses, ej: IDOR o Path Traversal)*.
-*   **Mapeo NIST SP 800-53:** AC-3 (Access Enforcement), AC-4 (Information Flow Enforcement).
-*   **Táctica MITRE ATT&CK:** 
-    *   **Atacante:** T1566 (Phishing) / T1190 (Exploit Public-Facing Application).
-    *   **Defensor:** T1078 (Valid Accounts - Detección de abuso de cuentas).
+El objetivo es simular el ciclo de vida completo de un ataque controlado en un entorno empresarial basado en la pila tecnológica de Microsoft, aplicando metodologías ofensivas y recolectando telemetría avanzada mediante **Sysmon** para emular las capacidades de un analista SOC / Incident Responder de nivel corporativo.
 
 ---
 
-## 2. Arquitectura y Despliegue del Laboratorio (Setup)
+## 🗺️ Matriz de Mapeo de Threat Intelligence
 
-### 2.1. Máquina Atacante
-*   **SO:** Kali Linux / Parrot OS.
-*   **Herramientas clave:** Burp Suite Community/Pro, Curl, FFUF/Gobuster.
+| Componente | Identificador / Framework | Clasificación / Táctica |
+| :--- | :--- | :--- |
+| **Categoría OWASP** | Top 10:2021 - A01 | Broken Access Control |
+| **Debilidad Mitre** | CWE-22 / CWE-73 | Path Traversal / File Access |
+| **Framework NIST** | SP 800-53 Rev. 5 | AC-3 (Access Enforcement) / AU-6 (Audit Review) |
+| **Táctica MITRE ATT&CK (Red)** | T1190 / T1083 | Exploit Public-Facing Application / File & Directory Discovery |
+| **Táctica MITRE ATT&CK (Blue)** | T1078 / DS0009 | Valid Accounts / Process Creation Logs (Sysmon) |
 
-### 2.2. Máquina Víctima
-*   **Entorno:** OWASP Juice Shop / DVWA (Desplegado en Docker o VM local).
-*   **Telemetría activa:** Sysmon (Windows) o Auditd (Linux), además de logs del servidor web (Apache/Nginx) centralizados.
+---
+
+## 🛠️ Fase 1: Despliegue de la Infraestructura e Ingeniería de Red
+
+Para contener los artefactos ofensivos y evitar fugas de tráfico hacia la red doméstica o Internet, la arquitectura se despliega en un entorno de red lógicamente aislado.
