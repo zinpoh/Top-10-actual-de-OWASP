@@ -34,10 +34,10 @@ Ambas máquinas virtuales deben configurarse en caliente o apagadas con los sigu
 4. Despliega *Avanzadas* y en *Modo promiscuo*, selecciona **Permitir todo** (indispensable para intercepción pasiva y análisis posterior de paquetes con Wireshark).
 
 > 📸 **[Captura 01 - Aislamiento de Red en Hypervisor]* -- **maquina victima**
-> `![Configuración de Red Interna VirtualBox](images/01_vbox_network_config.png)`
+> ![Configuración de Red Interna VirtualBox](img/01_vbox_network_config.png)
 
 > 📸 **[Captura 01 - Aislamiento de Red en Hypervisor]* -- **maquina victima**
-> `![Configuración de Red Interna VirtualBox](images/02_vbox_network_config.png)`
+> ![Configuración de Red Interna VirtualBox](img/02_vbox_network_config.png)
 
 ---
 
